@@ -1,0 +1,110 @@
+# This shows how R can be used as an overgrown calculator
+> 2+2
+[1] 4
+
+# Ths is e^ od some number
+> exp(-2)
+[1] 0.1353353
+
+#This generates random numbers along a normal distribution
+> rnorm(10)
+ [1]  0.09134628  0.12443980  0.08509584  0.12028145  1.30442590  0.71432134
+ [7]  0.33417936 -0.44359994 -0.22972823  1.68454813
+
+ #This shows the assignment operator and how it works with algebra
+> x<-2
+> x
+[1] 2
+> x+x
+[1] 4
+
+#This shows the concatenation function, which adds things head to tail and creates a single object, This includes
+string, numerics, and logical values
+> weight<-c(1,2,3,4,5,6)
+> weight
+[1] 1 2 3 4 5 6
+> height<-c(2,3,4,5,6,7)
+> height
+[1] 2 3 4 5 6 7
+
+Assignment to BMI of an expression done on two vectors. Hence vectorized algebra
+> bmi <- weight/(height)^2
+> bmi
+[1] 0.2500000 0.2222222 0.1875000 0.1600000 0.1388889 0.1224490
+
+#Shows long form of average as sum/length
+> sum(weight)
+[1] 21
+> length(weight)
+[1] 6
+> mean <- sum(weight)/length(weight)
+> mean
+[1] 3.5
+
+#Shows long form of std = sum of ((x-xbar)^2/n-1)
+> weight - mean
+[1] -2.5 -1.5 -0.5  0.5  1.5  2.5
+> sum((weight-mean)^2)
+[1] 17.5
+> std<-sqrt(sum(((weight-mean)^2)/(length(weight)-1))
++ std
+Error: unexpected symbol in:
+"std<-sqrt(sum(((weight-mean)^2)/(length(weight)-1))
+std"
+
+# Mistake with meanr
+> std <-sqrt(sum((weight - meanr)^2)/(length(weight) - 1))
+Error: object 'meanr' not found
+
+# Correct short form functions built into R
+> std <-sqrt(sum((weight - mean)^2)/(length(weight) - 1))
+> std
+[1] 1.870829
+> sd(weight)
+[1] 1.870829
+
+#failed t test
+> t.test(bmi)
+
+	One Sample t-test
+
+data:  bmi
+t = 8.9564, df = 5, p-value = 0.0002893
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.1284638 0.2318895
+sample estimates:
+mean of x 
+0.1801767 
+
+> plot(height,weight)
+> plot(height,weight,pch=3)
+> height
+[1] 2 3 4 5 6 7
+> hh <- c(2,3,4,5,6,7)
+> lines(hh,hh^2)
+
+# correct reinitialization of the weight and height variables and then t.test and the following plots
+> weight<-c(60,72,57,90,95,72)
+> height<-c(1.75,1.80,1.65,1.90,1.74,1.91)
+> bmi <- weight/height^2
+> t.test(bmi,mu=22.5)
+
+	One Sample t-test
+
+data:  bmi
+t = 0.34488, df = 5, p-value = 0.7442
+alternative hypothesis: true mean is not equal to 22.5
+95 percent confidence interval:
+ 18.41734 27.84791
+sample estimates:
+mean of x 
+ 23.13262 
+
+> plot(height,weight)
+> plot(height,weigh,pch=2t)
+Error: unexpected symbol in "plot(height,weigh,pch=2t"
+> plot(height,weight, pch=2)
+> hh<-c(1.65,1.70,1.75,1.80,1.90)
+> lines(hh,22.5*hh^2)
+> q()
